@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hochzeit von Nadin & Hassan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Dancing+Script:wght@500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --gold: #c9a96e;
+            --gold-light: #e8d5b0;
+            --gold-dark: #9e7c48;
+            --cream: #faf8f3;
+            --dark: #2c2418;
+            --text: #4a3f30;
+            --border: rgba(201,169,110,0.35);
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Cormorant Garamond', serif; background-color: var(--cream); color: var(--text); margin: 0; overflow-x: hidden; }
+
+        /* HERO */
+        .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(160deg, #1a1208 0%, #2e1f0e 40%, #1a1208 100%); }
+        .hero-bg { position: absolute; inset: 0; background-image: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,169,110,0.07) 0%, transparent 70%); }
+        .corner { position: absolute; width: 120px; height: 120px; opacity: 0.45; }
+        .corner svg { width: 100%; height: 100%; }
+        .corner-tl { top: 24px; left: 24px; }
+        .corner-tr { top: 24px; right: 24px; transform: scaleX(-1); }
+        .corner-bl { bottom: 24px; left: 24px; transform: scaleY(-1); }
+        .corner-br { bottom: 24px; right: 24px; transform: scale(-1); }
+        .hero-content { position: relative; text-align: center; padding: 60px 30px; max-width: 640px; width: 100%; }
+        .hero-eyebrow { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold-light); opacity: 0.85; margin-bottom: 28px; animation: fadeUp 1s ease both; }
+        .hero-divider { display: flex; align-items: center; gap: 14px; justify-content: center; margin: 20px auto; animation: fadeUp 1s ease 0.2s both; }
+        .hero-divider span { display: block; height: 1px; width: 60px; background: var(--gold); opacity: 0.6; }
+        .names { font-family: 'Dancing Script', cursive; font-size: clamp(3.2rem, 10vw, 5.5rem); font-weight: 600; color: #fff; line-height: 1.1; text-shadow: 0 2px 30px rgba(201,169,110,0.3); animation: fadeUp 1s ease 0.1s both; }
+        .names .amp { color: var(--gold); font-size: 0.8em; }
+        .hero-date { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; letter-spacing: 0.18em; color: var(--gold-light); margin-top: 22px; animation: fadeUp 1s ease 0.3s both; }
+        .hero-scroll { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--gold-light); opacity: 0.6; font-family: 'Montserrat', sans-serif; font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; animation: fadeIn 2s ease 1.2s both; }
+        .scroll-arrow { width: 20px; height: 20px; border-right: 1px solid var(--gold-light); border-bottom: 1px solid var(--gold-light); transform: rotate(45deg); animation: scrollBounce 2s ease infinite; }
+
+        /* SECTIONS */
+        section { padding: 80px 24px; }
+        .section-inner { max-width: 660px; margin: 0 auto; text-align: center; }
+        .section-label { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 16px; }
+        .section-title { font-family: 'Dancing Script', cursive; font-size: clamp(2rem, 6vw, 3rem); color: var(--dark); margin-bottom: 24px; }
+        .ornament-line { display: flex; align-items: center; gap: 16px; justify-content: center; margin: 0 auto 32px; }
+        .ornament-line::before, .ornament-line::after { content: ''; display: block; height: 1px; width: 50px; background: linear-gradient(to right, transparent, var(--gold)); }
+        .ornament-line::after { background: linear-gradient(to left, transparent, var(--gold)); }
+        .body-text { font-size: 1.15rem; line-height: 1.9; font-weight: 300; color: var(--text); font-style: italic; }
+
+        /* DETAILS */
+        .details-section { background: #fff; }
+        .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px; margin-top: 40px; }
+        .detail-card { border: 1px solid var(--border); padding: 36px 24px; position: relative; background: var(--cream); transition: box-shadow 0.3s ease; }
+        .detail-card:hover { box-shadow: 0 8px 32px rgba(201,169,110,0.12); }
+        .detail-card::before, .detail-card::after { content: ''; position: absolute; width: 14px; height: 14px; border-color: var(--gold); border-style: solid; opacity: 0.6; }
+        .detail-card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+        .detail-card::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+        .detail-icon { width: 44px; height: 44px; margin: 0 auto 18px; background: linear-gradient(135deg, var(--gold-light), var(--gold)); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .detail-icon svg { width: 20px; height: 20px; fill: #fff; }
+        .detail-label { font-family: 'Montserrat', sans-serif; font-size: 0.63rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 10px; }
+        .detail-value { font-size: 1.2rem; font-weight: 500; color: var(--dark); line-height: 1.5; }
+        .detail-sub { font-size: 0.92rem; color: #888; margin-top: 4px; font-style: italic; }
+
+        /* COUNTDOWN */
+        .countdown-section { background: linear-gradient(160deg, var(--dark) 0%, #3a2910 100%); color: #fff; }
+        .countdown-section .section-title { color: var(--gold-light); }
+        .countdown-section .section-label { color: var(--gold); }
+        .countdown-grid { display: flex; justify-content: center; gap: clamp(16px, 4vw, 40px); margin-top: 40px; flex-wrap: wrap; }
+        .countdown-unit { text-align: center; min-width: 72px; }
+        .countdown-number { display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 8vw, 4.2rem); font-weight: 300; color: var(--gold); line-height: 1; min-width: 72px; }
+        .countdown-label { font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 6px; }
+        .countdown-dot { font-size: 3rem; color: var(--gold); opacity: 0.4; line-height: 1; align-self: flex-start; margin-top: 8px; }
+
+        /* PROGRAM */
+        .program-section { background: var(--cream); }
+        .timeline { margin-top: 40px; text-align: left; position: relative; }
+        .timeline::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, var(--gold) 10%, var(--gold) 90%, transparent); opacity: 0.35; }
+        .timeline-item { display: flex; align-items: flex-start; gap: 24px; margin-bottom: 36px; position: relative; }
+        .timeline-item:nth-child(odd) { flex-direction: row-reverse; text-align: right; }
+        .timeline-content { flex: 1; }
+        .timeline-time { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--gold-dark); margin-bottom: 4px; }
+        .timeline-event { font-size: 1.1rem; font-weight: 500; color: var(--dark); }
+        .timeline-desc { font-size: 0.92rem; color: #888; font-style: italic; }
+        .timeline-dot { flex-shrink: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); margin-top: 5px; box-shadow: 0 0 0 4px rgba(201,169,110,0.15); }
+
+        /* MAP */
+        .map-section { background: #fff; padding-bottom: 0; }
+        .map-info { display: flex; align-items: flex-start; gap: 14px; background: var(--cream); border: 1px solid var(--border); padding: 22px 28px; margin: 32px auto 0; max-width: 500px; text-align: left; }
+        .map-info-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--gold-light), var(--gold)); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .map-info-icon svg { width: 18px; height: 18px; fill: #fff; }
+        .map-info-name { font-weight: 500; color: var(--dark); font-size: 1.05rem; }
+        .map-info-addr { font-size: 0.9rem; color: #888; font-style: italic; margin-top: 2px; }
+        .map-wrapper { margin-top: 32px; width: 100%; height: 380px; position: relative; overflow: hidden; }
+        .map-wrapper iframe { width: 100%; height: 100%; border: none; filter: grayscale(15%) sepia(10%); }
+
+        /* RSVP */
+        .rsvp-section { background: linear-gradient(160deg, var(--dark) 0%, #3a2910 100%); text-align: center; padding: 100px 24px; }
+        .rsvp-section .section-title { color: var(--gold-light); }
+        .rsvp-section .section-label { color: var(--gold); }
+        .rsvp-section .body-text { color: rgba(255,255,255,0.65); max-width: 420px; margin: 0 auto; }
+        .rsvp-btn { display: inline-block; margin-top: 38px; padding: 18px 50px; background: transparent; border: 1px solid var(--gold); color: var(--gold-light); font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; text-decoration: none; position: relative; transition: all 0.4s ease; cursor: pointer; }
+        .rsvp-btn::before { content: ''; position: absolute; inset: 4px; border: 1px solid rgba(201,169,110,0.2); transition: all 0.4s ease; }
+        .rsvp-btn:hover { background: var(--gold); color: var(--dark); }
+
+        /* FOOTER */
+        footer { background: #0e0a04; padding: 40px 24px; text-align: center; }
+        .footer-names { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--gold); letter-spacing: 0.05em; }
+        .footer-text { font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 0.22em; color: rgba(255,255,255,0.22); text-transform: uppercase; margin-top: 12px; }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes scrollBounce { 0%, 100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(5px); } }
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.visible { opacity: 1; transform: none; }
+
+        @media (max-width: 560px) {
+            .timeline::before { display: none; }
+            .timeline-item, .timeline-item:nth-child(odd) { flex-direction: column; text-align: left; gap: 10px; }
+            .timeline-dot { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="corner corner-tl"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c9a96e" stroke-width="0.8"><path d="M4 4 L4 50 M4 4 L50 4"/><path d="M18 18 L18 44 M18 18 L44 18"/><circle cx="4" cy="4" r="2.5" fill="#c9a96e"/><path d="M32 4 Q60 32 60 60 Q32 60 4 32" opacity="0.3"/></svg></div>
+    <div class="corner corner-tr"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c9a96e" stroke-width="0.8"><path d="M4 4 L4 50 M4 4 L50 4"/><path d="M18 18 L18 44 M18 18 L44 18"/><circle cx="4" cy="4" r="2.5" fill="#c9a96e"/><path d="M32 4 Q60 32 60 60 Q32 60 4 32" opacity="0.3"/></svg></div>
+    <div class="corner corner-bl"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c9a96e" stroke-width="0.8"><path d="M4 4 L4 50 M4 4 L50 4"/><path d="M18 18 L18 44 M18 18 L44 18"/><circle cx="4" cy="4" r="2.5" fill="#c9a96e"/><path d="M32 4 Q60 32 60 60 Q32 60 4 32" opacity="0.3"/></svg></div>
+    <div class="corner corner-br"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c9a96e" stroke-width="0.8"><path d="M4 4 L4 50 M4 4 L50 4"/><path d="M18 18 L18 44 M18 18 L44 18"/><circle cx="4" cy="4" r="2.5" fill="#c9a96e"/><path d="M32 4 Q60 32 60 60 Q32 60 4 32" opacity="0.3"/></svg></div>
+
+    <div class="hero-content">
+        <p class="hero-eyebrow">Wir sagen Ja</p>
+        <div class="hero-divider"><span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="#c9a96e"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg><span></span></div>
+        <h1 class="names">Nadin <span class="amp">&amp;</span> Hassan</h1>
+        <div class="hero-divider" style="margin-top:24px"><span></span><svg width="14" height="14" viewBox="0 0 24 24" fill="#c9a96e" opacity="0.7"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg><span></span></div>
+        <p class="hero-date">Samstag, 16. Mai 2026 &nbsp;&middot;&nbsp; 17:00 Uhr</p>
+    </div>
+    <div class="hero-scroll"><span>Entdecken</span><div class="scroll-arrow"></div></div>
+</section>
+
+<!-- EINLADUNG -->
+<section>
+    <div class="section-inner reveal">
+        <p class="section-label">Herzliche Einladung</p>
+        <h2 class="section-title">Ein besonderer Tag</h2>
+        <div class="ornament-line"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c9a96e"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+        <p class="body-text">Wir freuen uns von Herzen, Euch zu unserem großen Tag einzuladen.<br><br>Kommt und feiert mit uns den schönsten Moment unseres Lebens — umgeben von den Menschen, die uns am meisten bedeuten.</p>
+    </div>
+</section>
+
+<!-- DETAILS -->
+<section class="details-section">
+    <div class="section-inner reveal">
+        <p class="section-label">Alle Informationen</p>
+        <h2 class="section-title">Datum &amp; Ort</h2>
+        <div class="ornament-line"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c9a96e"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-2 .89-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zM7 12h5v5H7z"/></svg></div>
+                <p class="detail-label">Datum</p>
+                <p class="detail-value">16. Mai 2026</p>
+                <p class="detail-sub">Samstag</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+                <p class="detail-label">Location</p>
+                <p class="detail-value">Byblos Restaurant</p>
+                <p class="detail-sub">Spichernstra&szlig;e 24, Berlin</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></div>
+                <p class="detail-label">Uhrzeit</p>
+                <p class="detail-value">17:00 Uhr</p>
+                <p class="detail-sub">Einlass ab 16:30 Uhr</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"/></svg></div>
+                <p class="detail-label">Dresscode</p>
+                <p class="detail-value">Festlich elegant</p>
+                <p class="detail-sub">Gold &amp; Champagner willkommen</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown-section">
+    <div class="section-inner reveal">
+        <p class="section-label">Bis zur Hochzeit</p>
+        <h2 class="section-title">Noch nicht lange hin</h2>
+        <div class="ornament-line"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c9a96e"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+        <div class="countdown-grid" id="countdown">
+            <div class="countdown-unit"><span class="countdown-number" id="days">--</span><span class="countdown-label">Tage</span></div>
+            <div class="countdown-dot">&middot;</div>
+            <div class="countdown-unit"><span class="countdown-number" id="hours">--</span><span class="countdown-label">Stunden</span></div>
+            <div class="countdown-dot">&middot;</div>
+            <div class="countdown-unit"><span class="countdown-number" id="minutes">--</span><span class="countdown-label">Minuten</span></div>
+            <div class="countdown-dot">&middot;</div>
+            <div class="countdown-unit"><span class="countdown-number" id="seconds">--</span><span class="countdown-label">Sekunden</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- PROGRAMM -->
+<section class="program-section">
+    <div class="section-inner reveal">
+        <p class="section-label">Tagesablauf</p>
+        <h2 class="section-title">Das Programm</h2>
+        <div class="ornament-line"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c9a96e"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content"><p class="timeline-time">16:30 Uhr</p><p class="timeline-event">Einlass &amp; Empfang</p><p class="timeline-desc">Willkommensdrink &amp; erste Begegnungen</p></div>
+                <div class="timeline-dot"></div><div class="timeline-content"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content"></div><div class="timeline-dot"></div>
+                <div class="timeline-content"><p class="timeline-time">17:00 Uhr</p><p class="timeline-event">Trauungszeremonie</p><p class="timeline-desc">Der feierliche Moment des Ja-Worts</p></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content"><p class="timeline-time">18:00 Uhr</p><p class="timeline-event">Sektempfang</p><p class="timeline-desc">Gl&uuml;ckw&uuml;nsche &amp; Gruppenfotos</p></div>
+                <div class="timeline-dot"></div><div class="timeline-content"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content"></div><div class="timeline-dot"></div>
+                <div class="timeline-content"><p class="timeline-time">19:30 Uhr</p><p class="timeline-event">Festliches Dinner</p><p class="timeline-desc">Libanesische Spezialit&auml;ten &amp; gute Gespr&auml;che</p></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content"><p class="timeline-time">21:30 Uhr</p><p class="timeline-event">Musik &amp; Tanz</p><p class="timeline-desc">Bis in die fr&uuml;hen Morgenstunden feiern</p></div>
+                <div class="timeline-dot"></div><div class="timeline-content"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KARTE -->
+<section class="map-section">
+    <div class="section-inner reveal">
+        <p class="section-label">Anfahrt</p>
+        <h2 class="section-title">So findet ihr uns</h2>
+        <div class="ornament-line"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c9a96e"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+        <div class="map-info">
+            <div class="map-info-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+            <div>
+                <p class="map-info-name">Byblos Restaurant Berlin by Nassib Fadel</p>
+                <p class="map-info-addr">Spichernstra&szlig;e 24, 10777 Berlin &nbsp;&middot;&nbsp; U-Bahn: Spichernstra&szlig;e</p>
+            </div>
+        </div>
+    </div>
+    <div class="map-wrapper">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.6499012345!2d13.331875615672!3d52.497681700000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84fcbca24272f%3A0xcda0fdec096f4ff8!2sByblos%20Restaurant%20Berlin%20by%20Nassib%20Fadel!5e0!3m2!1sde!2sde!4v1700000000000!5m2!1sde!2sde" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</section>
+
+<!-- RSVP -->
+<section class="rsvp-section">
+    <div class="section-inner reveal">
+        <p class="section-label">R&uuml;ckmeldung</p>
+        <h2 class="section-title">Seid Ihr dabei?</h2>
+        <div class="ornament-line"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c9a96e"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+        <p class="body-text">Damit wir alles perfekt planen k&ouml;nnen, bitten wir Euch herzlich um eine R&uuml;ckmeldung bis zum <strong style="color:var(--gold-light)">1. Mai 2026</strong>.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSezZf5FHcDbMfRsvHNLnBxSFUzjfEBZnexl15Y1VzIek-LRwg/viewform?usp=publish-editor" class="rsvp-btn" target="_blank">Jetzt zusagen &nbsp;/&nbsp; absagen</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p class="footer-names">Nadin &amp; Hassan</p>
+    <p class="footer-text">16. Mai 2026 &nbsp;&middot;&nbsp; Berlin &nbsp;&middot;&nbsp; F&uuml;r immer</p>
+</footer>
+
+<script>
+    const wedding = new Date('2026-05-16T17:00:00');
+    function updateCountdown() {
+        const now = new Date();
+        const diff = wedding - now;
+        if (diff <= 0) {
+            document.getElementById('countdown').innerHTML = '<p style="color:var(--gold);font-size:1.6rem;font-family:\'Dancing Script\',cursive">Heute ist der grosse Tag!</p>';
+            return;
+        }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('days').textContent    = String(d).padStart(2, '0');
+        document.getElementById('hours').textContent   = String(h).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
